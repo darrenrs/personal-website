@@ -1,0 +1,44 @@
+---
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+import "@fontsource/space-grotesk";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{title}</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#151923" />
+  </head>
+  <body>
+    <Navbar />
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="container">
+      <p>
+        &copy; 2026 Darren R. Skidmore. All rights reserved.<br />Built with
+        <a href="https://astro.build/">Astro</a> and hosted by <a
+          href="https://www.digitalocean.com/">DigitalOcean VPS</a
+        >.
+      </p>
+    </footer>
+  </body>
+</html>

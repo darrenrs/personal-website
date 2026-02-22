@@ -1,0 +1,91 @@
+---
+import Layout from "../layout/Layout.astro";
+
+const projects_personal = [
+  {
+    title: "Idle Game Tools",
+    description:
+      "A collection of browser tools that I have created or collaborated on to support players in various idle video games, including AdVenture Communist, AdVenture Ages, and Gold and Goblins.",
+    href: "https://idlegametools.com",
+  },
+  {
+    title: "Temple Tracker",
+    description:
+      "CURRENTLY IN ALPHA. A simple website to track visits to temples in the Church of Jesus Christ of Latter-day Saints. Full-stack Next.js server hosted on Vercel.",
+    href: "https://temple-tracker.vercel.app",
+  },
+  {
+    title: "Days Alive Menu Bar",
+    description:
+      "An ultra-lightweight, native Swift macOS application that allows users to be reminded of how old they are at all times.",
+    href: "https://github.com/darrenrs/days-alive-menu-bar",
+  },
+  {
+    title: "Education and Income Explorer",
+    description:
+      "NOT YET RELEASED. A granular visualization of education and income data in the United States at various geography levels.",
+    href: "",
+  },
+  {
+    title: "Mohapel Emotional Quotient Index",
+    description:
+      "NOT YET RELEASED. A quick emotional quotient test with four validated enabling insights into one's emotional expression and introspection.",
+    href: "",
+  },
+];
+
+const projects_academic = [
+  {
+    title: "CS 474: Spotify Playlist Extender",
+    description: "ML; Fall 2023",
+    href: "",
+  },
+  {
+    title: "CS 270: NBA Betting Line Predictor",
+    description: "ML; Winter 2024",
+    href: "",
+  },
+  {
+    title: "Stat 230: Figure Weights Performance",
+    description: "Stats Experiment; Winter 2024",
+    href: "",
+  },
+];
+---
+
+<Layout
+  title="Portfolio | Darren R. Skidmore"
+  description="Browse selected projects by Darren Skidmore."
+>
+  <section class="stack">
+    <h1>Portfolio</h1>
+    <p>
+      Most of my projects are not in any real state of completion. My goal for
+      2026 is to clean that up.
+    </p>
+    <h2>Side Projects</h2>
+    <div class="grid">
+      {
+        projects_personal.map((project) => (
+          <a class="card" href={project.href}>
+            <div class="placeholder-landscape">Project image</div>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+          </a>
+        ))
+      }
+    </div>
+    <h2>School Projects</h2>
+    <div class="grid">
+      {
+        projects_academic.map((project) => (
+          <a class="card" href={project.href}>
+            <div class="placeholder-landscape">Project image</div>
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

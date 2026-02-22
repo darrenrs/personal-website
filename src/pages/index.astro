@@ -1,11 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Image from "astro/components/Image.astro";
+import selfPortrait from "../images/portrait.jpg";
+import Layout from "../layout/Layout.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Darren R. Skidmore" description="Home page for Darren Skidmore.">
+  <section class="hero hero-split">
+    <div class="stack">
+      <h1>Hi, I'm Darren Skidmore.</h1>
+      <p>
+        I'm a computer science major with an emphasis in data science at Brigham
+        Young University in Provo, Utah. I am passionate about technology and
+        software engineering, and I am interested in understanding and solving
+        problems using data and statistical methods. Check out my projects and
+        other interests here, and if this site piques your interest, get in
+        touch!
+      </p>
+      <div class="actions">
+        <a href="/about">About</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/contact">Contact</a>
+        <a href="/resume.pdf">Resume</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <Image src={selfPortrait} alt="Darren Skidmore" />
+    </div>
+  </section>
 </Layout>
