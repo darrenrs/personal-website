@@ -15,7 +15,7 @@ import Layout from "../layout/Layout.astro";
     <div class="grid contact-grid">
       <a
         class="card contact-card"
-        href="https://www.linkedin.com/darrenrs0515"
+        href="https://www.linkedin.com/in/darrenrs0515"
         target="_blank"
         rel="noreferrer"
       >
@@ -51,7 +51,11 @@ import Layout from "../layout/Layout.astro";
         <h2>GitHub</h2>
         <p><code>darrenrs</code></p>
       </a>
-      <a class="card contact-card" href="mailto:darrenrs0515@gmail.com">
+      <a
+        class="card contact-card contact-card-email"
+        href="#"
+        onclick="window.location.href = 'mailto: darrenrs0515@gmail.com'; return false;"
+      >
         <span class="contact-icon" aria-hidden="true">
           <svg
             viewBox="0 0 24 24"
@@ -64,7 +68,13 @@ import Layout from "../layout/Layout.astro";
           </svg>
         </span>
         <h2>Email</h2>
-        <p><code>darrenrs0515@gmail.com</code></p>
+        <p>
+          <code
+            class="contact-email"
+            data-name="darrenrs0515"
+            data-domain="gmail"
+            data-tld="com"></code>
+        </p>
       </a>
     </div>
   </section>

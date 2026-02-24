@@ -237,6 +237,10 @@ footer a {
   margin-top: -0.15rem;
 }
 
+.contact-email::after {
+  content: attr(data-name) "@" attr(data-domain) "." attr(data-tld);
+}
+
 .contact-icon {
   width: 2.5rem;
   height: 2.5rem;
