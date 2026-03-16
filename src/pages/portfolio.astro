@@ -1,7 +1,18 @@
 ---
 import Layout from "../layout/Layout.astro";
+import Image from "astro/components/Image.astro";
+import type { ImageMetadata } from "astro";
+import imageCensusVisualizer from "../images/projects/census-visualizer.png";
 
-const projects_personal = [
+type Project = {
+  title: string;
+  description: string;
+  href: string;
+  img?: ImageMetadata;
+  imgAlt?: string;
+};
+
+const projects_personal: Project[] = [
   {
     title: "Idle Game Tools",
     description:
@@ -23,8 +34,10 @@ const projects_personal = [
   {
     title: "Census Visualizer",
     description:
-      "NOT YET RELEASED. A granular visualization of American Community Survey data in the United States at various geography levels.",
-    href: "https://github.com/darrenrs/census-visualizer",
+      "A granular visualization of American Community Survey data in the United States at various geography levels.",
+    href: "https://darrenskidmore.com/projects/census-visualizer",
+    img: imageCensusVisualizer,
+    imgAlt: "Screenshot of Census Visualizer project",
   },
   {
     title: "Mohapel Emotional Intelligence Self-Assessment",
@@ -34,7 +47,7 @@ const projects_personal = [
   },
 ];
 
-const projects_academic = [
+const projects_academic: Project[] = [
   {
     title: "CS 474: Spotify Playlist Extender",
     description: "ML; Fall 2023",
@@ -66,9 +79,19 @@ const projects_academic = [
     <h2>Side Projects</h2>
     <div class="grid">
       {
-        projects_personal.map((project) => (
+        projects_personal.map((project: Project) => (
           <a class="card" href={project.href}>
-            <div class="placeholder-landscape">Project image</div>
+            <div class="project-media">
+              {project.img ? (
+                <Image
+                  src={project.img}
+                  alt={project.imgAlt ?? `${project.title} screenshot`}
+                  class="project-image"
+                />
+              ) : (
+                <div class="placeholder-landscape">Project image</div>
+              )}
+            </div>
             <h2>{project.title}</h2>
             <p>{project.description}</p>
           </a>
@@ -78,9 +101,11 @@ const projects_academic = [
     <h2>School Projects</h2>
     <div class="grid">
       {
-        projects_academic.map((project) => (
+        projects_academic.map((project: Project) => (
           <a class="card" href={project.href}>
-            <div class="placeholder-landscape">Project image</div>
+            <div class="project-media">
+              <div class="placeholder-landscape">Project image</div>
+            </div>
             <h2>{project.title}</h2>
             <p>{project.description}</p>
           </a>
