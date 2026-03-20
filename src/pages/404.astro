@@ -1,0 +1,28 @@
+---
+import Layout from "../layout/Layout.astro";
+---
+
+<Layout title="404 Not Found" description="404 Not Found">
+  <section class="hero hero-split">
+    <div class="stack">
+      <h1>404 - Not Found</h1>
+      <p>
+        Congratulations on finding one of the
+        <abbr
+          class="tooltip-term"
+          title="total unique characters in a URL^maximum URL length in nginx = 66^(8192-16)"
+          >~3.9 &times;10<sup>14876</sup></abbr
+        >
+        possible 404 pages!
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .tooltip-term {
+    text-decoration: underline dotted;
+    text-underline-offset: 0.15em;
+    cursor: help;
+  }
+</style>
