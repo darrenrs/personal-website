@@ -1,13 +1,80 @@
 ---
 import Layout from "../layout/Layout.astro";
+import "../styles/photos.css";
 ---
 
 <Layout
   title="Photos | Darren R. Skidmore"
   description="Collection of pictures taken by Darren Skidmore."
 >
-  <h1>Photography</h1>
   <section class="stack">
-    <p>TBD 2026-03-17</p>
+    <h1>Photography</h1>
+    <p>
+      A selection of photos I've taken with my iPhone over the years! All
+      pictures are licensed under <a
+        href="https://creativecommons.org/licenses/by-sa/4.0/deed.en"
+        >Creative Commons Attribution-Share Alike 4.0 International</a
+      >.
+    </p>
   </section>
+
+  <section class="photos-gallery-shell" aria-label="Photo gallery">
+    <p
+      id="photos-gallery-status"
+      class="photos-gallery-status"
+      aria-live="polite"
+    >
+      Loading photos...
+    </p>
+    <noscript>
+      <p class="photos-gallery-status">
+        JavaScript is required to load this photo gallery.
+      </p>
+    </noscript>
+    <div id="photos-gallery" class="photos-gallery-grid" hidden></div>
+  </section>
+
+  <dialog id="photos-lightbox" class="photos-lightbox">
+    <button
+      type="button"
+      id="photos-lightbox-close"
+      class="photos-lightbox-icon-button photos-lightbox-close"
+      aria-label="Close gallery"
+    >
+      &#x2715;
+    </button>
+
+    <div class="photos-lightbox-shell">
+      <p id="photos-lightbox-counter" class="photos-lightbox-counter"></p>
+
+      <figure class="photos-lightbox-figure">
+        <img id="photos-lightbox-image" alt="" />
+        <figcaption
+          id="photos-lightbox-caption"
+          class="photos-lightbox-caption"
+        >
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="photos-lightbox-controls" aria-label="Gallery navigation">
+      <button
+        type="button"
+        class="photos-lightbox-icon-button photos-lightbox-nav-button"
+        data-direction="prev"
+        aria-label="Previous photo"
+      >
+        &#x2190;
+      </button>
+      <button
+        type="button"
+        class="photos-lightbox-icon-button photos-lightbox-nav-button"
+        data-direction="next"
+        aria-label="Next photo"
+      >
+        &#x2192;
+      </button>
+    </div>
+  </dialog>
+  <script src="../scripts/photos.js"></script>
 </Layout>
