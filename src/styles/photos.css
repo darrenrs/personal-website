@@ -20,7 +20,7 @@
 
 .photos-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1rem;
   align-items: end;
 }
@@ -72,6 +72,12 @@
   color: var(--text);
   font-weight: 600;
   line-height: 1.4;
+}
+
+.photos-card p.photos-license {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--muted);
 }
 
 .photos-card p.photos-meta-description,

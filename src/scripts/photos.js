@@ -115,6 +115,13 @@ function initPhotosPage() {
     return DATE_FORMATTER.format(date);
   }
 
+  function copyrightNoticeText(photo) {
+    console.log(photo);
+    return typeof photo.copyrightNotice === "string"
+      ? photo.copyrightNotice.trim()
+      : "";
+  }
+
   function cardDescriptionText(photo) {
     const date = formattedDate(photo);
     const description = descriptionText(photo);
@@ -176,6 +183,7 @@ function initPhotosPage() {
     const thumb = document.createElement("div");
     const image = document.createElement("img");
     const metadata = document.createElement("div");
+    const copyright = copyrightNoticeText(photo);
     const summary = cardDescriptionText(photo);
     const gps = gpsText(photo);
     const label = cameraLabel(photo);
@@ -200,6 +208,13 @@ function initPhotosPage() {
     image.decoding = "async";
 
     metadata.className = "photos-meta";
+
+    if (copyright) {
+      const descriptionRow = document.createElement("p");
+      descriptionRow.className = "photos-license";
+      descriptionRow.textContent = copyright;
+      metadata.append(descriptionRow);
+    }
 
     if (summary) {
       const descriptionRow = document.createElement("p");
