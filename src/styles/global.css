@@ -1,4 +1,7 @@
 :root {
+  --font-sans: "Outfit Variable", sans-serif;
+  --font-header: "Space Grotesk Variable", sans-serif;
+  --font-mono: "Spline Sans Mono Variable", monospace;
   --bg: #edf2fb;
   --bg-gradient: #fff8ed;
   --text: #151923;
@@ -28,16 +31,19 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  font-family:
-    "Space Grotesk",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: var(--font-sans);
   background:
     radial-gradient(circle at top, var(--bg-gradient) 0, transparent 800px),
     radial-gradient(circle at bottom, var(--bg) 0, var(--bg) 800px);
   color: var(--text);
   line-height: 1.6;
+}
+
+nav,
+footer,
+h1,
+h2 {
+  font-family: var(--font-header);
 }
 
 a {
@@ -136,10 +142,6 @@ footer a {
 section p {
   color: var(--muted);
   max-width: 80ch;
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
 }
 
 .hero-split {
@@ -219,10 +221,6 @@ section p {
 
 .card p {
   color: var(--muted);
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
 }
 
 .project-media {
@@ -300,6 +298,8 @@ code {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 0.1rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 13px;
 }
 
 @media (max-width: 900px) {

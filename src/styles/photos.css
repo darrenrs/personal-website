@@ -7,11 +7,6 @@
   display: grid;
   gap: 1rem;
   overflow-x: clip;
-  font-family:
-    "Space Grotesk",
-    system-ui,
-    -apple-system,
-    sans-serif;
 }
 
 .photos-gallery-status {
@@ -57,11 +52,6 @@
   display: grid;
   gap: 0.55rem;
   padding: 1rem;
-  font-family:
-    "Space Grotesk",
-    system-ui,
-    -apple-system,
-    sans-serif;
 }
 
 .photos-meta-row {
@@ -87,20 +77,10 @@
   line-height: 1.5;
 }
 
-.photos-card p.photos-meta-description {
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
-}
-
 .photos-card p.photos-meta-gps {
   text-align: center;
-  font-family:
-    "Space Grotesk",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: var(--font-mono);
+  font-size: 13px;
 }
 
 .photos-lightbox {
@@ -138,11 +118,6 @@
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
-  font-family:
-    "Space Grotesk",
-    system-ui,
-    -apple-system,
-    sans-serif;
 }
 
 .photos-lightbox-counter,
@@ -152,10 +127,6 @@
   text-align: center;
   padding: 0.8rem 1rem;
   overflow-wrap: break-word;
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
 }
 
 .photos-lightbox-figure {

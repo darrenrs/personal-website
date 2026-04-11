@@ -9,7 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/space-grotesk": "^5.2.10",
+    "@fontsource-variable/outfit": "^5.2.8",
+    "@fontsource-variable/space-grotesk": "^5.2.10",
+    "@fontsource-variable/spline-sans-mono": "^5.2.8",
     "astro": "^5.16.5"
   }
 }

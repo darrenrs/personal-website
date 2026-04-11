@@ -9,6 +9,7 @@ import imageUtahPublicData from "../images/projects/utah-public-data.jpg";
 import imageCS474 from "../images/projects/cs474-spotify-music.jpg";
 import imageCS270 from "../images/projects/cs270-nba-predictive-model.jpg";
 import imageStat230 from "../images/projects/stat230-figure-weights.png";
+import imagePhotography from "../images/projects/photography-sample.jpg";
 
 type Project = {
   title: string;
@@ -21,24 +22,6 @@ type Project = {
 };
 
 const projects_personal: Project[] = [
-  {
-    title: "Idle Game Tools",
-    description:
-      "A collection of browser tools that I have created or collaborated on to support players in various idle video games, including AdVenture Communist, AdVenture Ages, and Gold and Goblins.",
-    href: "https://idlegametools.com",
-    img: imageIdleGameTools,
-    imgAlt:
-      "Sample screenshot from the AdVenture Communist Mission Tracker on Idle Game Tools.",
-  },
-  {
-    title: "Days Alive Menu Bar",
-    description:
-      "An ultra-lightweight, native Swift macOS application that allows users to be reminded of how old they are at all times.",
-    href: "https://github.com/darrenrs/days-alive-menu-bar",
-    img: imageDaysAliveMenuBar,
-    imgAlt:
-      "Sample screenshot of Days Alive Menu Bar showing one billion seconds of life.",
-  },
   {
     title: "Census Visualizer",
     description:
@@ -57,6 +40,30 @@ const projects_personal: Project[] = [
     imgAlt: "The skyline of Salt Lake City, Utah's most well known city.",
     imgLicense: "Creative Commons Attribution 4.0 International",
     imgSrc: "https://commons.wikimedia.org/wiki/File:SLC_Skyline_2024.jpg",
+  },
+  {
+    title: "IPIP Workbench",
+    description:
+      "Psychometric study, factor analysis, and online interactive for several personality inventories using the International Personality Item Pool.",
+    href: "https://github.com/darrenrs/ipip-ei-workbench",
+  },
+  {
+    title: "Idle Game Tools",
+    description:
+      "A collection of browser tools that I have created or collaborated on to support players in various idle video games, including AdVenture Communist, AdVenture Ages, and Gold and Goblins.",
+    href: "https://idlegametools.com",
+    img: imageIdleGameTools,
+    imgAlt:
+      "Sample screenshot from the AdVenture Communist Mission Tracker on Idle Game Tools.",
+  },
+  {
+    title: "Days Alive Menu Bar",
+    description:
+      "An ultra-lightweight, native Swift macOS application that allows users to be reminded of how old they are at all times.",
+    href: "https://github.com/darrenrs/days-alive-menu-bar",
+    img: imageDaysAliveMenuBar,
+    imgAlt:
+      "Sample screenshot of Days Alive Menu Bar showing one billion seconds of life.",
   },
 ];
 
@@ -88,6 +95,18 @@ const projects_academic: Project[] = [
     href: "/files/stat230-figure-weights-anova-experiment.pdf",
     img: imageStat230,
     imgAlt: "Sample screenshot of a Figure Weights problem.",
+  },
+];
+
+const projects_other: Project[] = [
+  {
+    title: "Photography",
+    description:
+      "A collection of my favorite photos I have taken over the years. Mainly landscapes, skylines, and liminal spaces.",
+    href: "/photos",
+    img: imagePhotography,
+    imgAlt:
+      "Cypress Cove Scenic View in Monterey County, California (April 23, 2022).",
   },
 ];
 ---
@@ -130,6 +149,33 @@ const projects_academic: Project[] = [
     <div class="grid">
       {
         projects_academic.map((project: Project) => (
+          <a class="card" href={project.href}>
+            <div class="project-media">
+              {project.img ? (
+                <Image
+                  src={project.img}
+                  alt={project.imgAlt ?? `${project.title} screenshot`}
+                  class="project-image"
+                />
+              ) : (
+                <div class="placeholder-landscape">Project image</div>
+              )}
+            </div>
+            {project.imgLicense ? (
+              <div class="project-license">
+                Licensed under {project.imgLicense}
+              </div>
+            ) : null}
+            <h2>{project.title}</h2>
+            <p>{project.description}</p>
+          </a>
+        ))
+      }
+    </div>
+    <h2>Other</h2>
+    <div class="grid">
+      {
+        projects_other.map((project: Project) => (
           <a class="card" href={project.href}>
             <div class="project-media">
               {project.img ? (
