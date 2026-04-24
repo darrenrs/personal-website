@@ -2,10 +2,10 @@
 import Layout from "../layout/Layout.astro";
 import Image from "astro/components/Image.astro";
 import type { ImageMetadata } from "astro";
-import imageIdleGameTools from "../images/projects/idle-game-adcom-sample.png";
-import imageDaysAliveMenuBar from "../images/projects/days-alive-menu-bar.png";
 import imageCensusVisualizer from "../images/projects/census-visualizer.png";
 import imageUtahPublicData from "../images/projects/utah-public-data.jpg";
+import imageIPIPWorkbench from "../images/projects/ipip-workbench.png";
+import imageDaysAliveMenuBar from "../images/projects/days-alive-menu-bar.png";
 import imageCS474 from "../images/projects/cs474-spotify-music.jpg";
 import imageCS270 from "../images/projects/cs270-nba-predictive-model.jpg";
 import imageStat230 from "../images/projects/stat230-figure-weights.png";
@@ -34,7 +34,7 @@ const projects_personal: Project[] = [
   {
     title: "Utah Public Data",
     description:
-      "A collection of analyses of public data in Utah's schools and communities.",
+      "(Under construction) A collection of analyses of public data in Utah's schools and communities.",
     href: "/projects/utah-public-data/",
     img: imageUtahPublicData,
     imgAlt: "The skyline of Salt Lake City, Utah's most well known city.",
@@ -44,22 +44,15 @@ const projects_personal: Project[] = [
   {
     title: "IPIP Workbench",
     description:
-      "Psychometric study, factor analysis, and online interactive for several personality inventories using the International Personality Item Pool.",
-    href: "https://github.com/darrenrs/ipip-ei-workbench",
-  },
-  {
-    title: "Idle Game Tools",
-    description:
-      "A collection of browser tools that I have created or collaborated on to support players in various idle video games, including AdVenture Communist, AdVenture Ages, and Gold and Goblins.",
-    href: "https://idlegametools.com",
-    img: imageIdleGameTools,
-    imgAlt:
-      "Sample screenshot from the AdVenture Communist Mission Tracker on Idle Game Tools.",
+      "(Under construction) Psychometric study, factor analysis, and online interactive for several personality inventories using the International Personality Item Pool.",
+    href: "https://github.com/darrenrs/ipip-workbench",
+    img: imageIPIPWorkbench,
+    imgAlt: "A factor heatmap diagram of the Big Five personality domains.",
   },
   {
     title: "Days Alive Menu Bar",
     description:
-      "An ultra-lightweight, native Swift macOS application that allows users to be reminded of how old they are at all times.",
+      "An ultra-lightweight, native Swift macOS application that allows users to be reminded about just how old they're becoming.",
     href: "https://github.com/darrenrs/days-alive-menu-bar",
     img: imageDaysAliveMenuBar,
     imgAlt:
@@ -139,7 +132,7 @@ const projects_other: Project[] = [
                 Licensed under {project.imgLicense}
               </div>
             ) : null}
-            <h2>{project.title}</h2>
+            <h3>{project.title}</h3>
             <p>{project.description}</p>
           </a>
         ))
@@ -166,7 +159,7 @@ const projects_other: Project[] = [
                 Licensed under {project.imgLicense}
               </div>
             ) : null}
-            <h2>{project.title}</h2>
+            <h3>{project.title}</h3>
             <p>{project.description}</p>
           </a>
         ))
@@ -193,7 +186,7 @@ const projects_other: Project[] = [
                 Licensed under {project.imgLicense}
               </div>
             ) : null}
-            <h2>{project.title}</h2>
+            <h3>{project.title}</h3>
             <p>{project.description}</p>
           </a>
         ))

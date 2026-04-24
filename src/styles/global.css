@@ -42,7 +42,8 @@ body {
 nav,
 footer,
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--font-header);
 }
 
@@ -57,6 +58,7 @@ a:hover {
 
 h1,
 h2,
+h3,
 p {
   margin: 0;
 }
