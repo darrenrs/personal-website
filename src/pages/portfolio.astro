@@ -10,6 +10,7 @@ import imageCS474 from "../images/projects/cs474-spotify-music.jpg";
 import imageCS270 from "../images/projects/cs270-nba-predictive-model.jpg";
 import imageStat230 from "../images/projects/stat230-figure-weights.png";
 import imagePhotography from "../images/projects/photography-sample.jpg";
+import imageIdleGameTools from "../images/projects/idle-game-tools.png";
 
 type Project = {
   title: string;
@@ -103,6 +104,15 @@ const projects_other: Project[] = [
     imgAlt:
       "Cypress Cove Scenic View in Monterey County, California (April 23, 2022).",
   },
+  {
+    title: "Idle Game Tools",
+    description:
+      "A collection of community-developed utilities that I currently maintain for selected idle/incremental games.",
+    href: "https://idlegametools.com",
+    img: imageIdleGameTools,
+    imgAlt:
+      "Screenshot of exponential growth with upgrade symbols, representing idle game progress.",
+  },
 ];
 ---
 
@@ -131,7 +141,7 @@ const projects_other: Project[] = [
             </div>
             {project.imgLicense ? (
               <div class="project-license">
-                Licensed under {project.imgLicense}
+                Image licensed under {project.imgLicense}
               </div>
             ) : null}
             <h3>{project.title}</h3>
@@ -158,7 +168,7 @@ const projects_other: Project[] = [
             </div>
             {project.imgLicense ? (
               <div class="project-license">
-                Licensed under {project.imgLicense}
+                Image licensed under {project.imgLicense}
               </div>
             ) : null}
             <h3>{project.title}</h3>
@@ -185,7 +195,7 @@ const projects_other: Project[] = [
             </div>
             {project.imgLicense ? (
               <div class="project-license">
-                Licensed under {project.imgLicense}
+                Image licensed under {project.imgLicense}
               </div>
             ) : null}
             <h3>{project.title}</h3>

@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
 import "@fontsource-variable/space-grotesk";
@@ -28,6 +29,7 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#151923" />
+    <ClientRouter />
   </head>
   <body>
     <Navbar />
