@@ -135,6 +135,35 @@ footer a {
   text-decoration: underline !important;
 }
 
+.footer-links {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: color-mix(in srgb, var(--muted), var(--surface) 22%);
+}
+
+.footer-links a:hover {
+  color: var(--muted);
+}
+
+@media (min-width: 760px) {
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footer-links {
+    margin-top: 0;
+    justify-content: flex-end;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
 .hero h1 {
   font-size: clamp(2.3rem, 5vw, 4rem);
   line-height: 1.05;
