@@ -8,12 +8,85 @@ import Layout from "../layout/Layout.astro";
 >
   <section class="stack">
     <h1>Privacy Policy</h1>
+    <em>Last updated 01 June 2026.</em>
+    <h2 id="general">General</h2>
+    <p>
+      The following applies to all content on
+      <code>darrenskidmore.com</code>:
+    </p>
+    <p>
+      This site is hosted by a DigitalOcean VPS (virtual private server), with
+      Cloudflare acting as a reverse proxy/DNS resolver and Nginx as the web
+      server.
+    </p>
+    <p>The following applies to all content hosted on this site:</p>
+    <ul>
+      <li>
+        Nginx server logs, which include Cloudflare-proxied IP addresses,
+        timestamps, paths, and user agents, are stored in the VPS for up to 14
+        days. Users' real IP addresses are not stored.
+      </li>
+      <li>
+        Cloudflare may process network and request metadata as part of
+        delivering content, caching assets, and providing analytics for this
+        site.
+      </li>
+      <li>
+        Cloudflare Web Analytics is used for aggregate usage and performance
+        statistics for this site, such as country and device type. Cloudflare
+        Web Analytics is not used to identify individual users of this site.
+      </li>
+      <li>Neither cookies nor advertising services are used.</li>
+    </ul>
+    <p>
+      This Privacy Policy and this site's data governance procedures do not
+      apply to third-party pages linked from this site.
+    </p>
+    <h2 id="census-visualizer">Census Visualizer</h2>
+    <p>
+      The following applies specifically to the <strong
+        >Census Visualizer</strong
+      > website:
+    </p>
+    <p>
+      Census Visualizer does not use cookies, local storage, or session storage.
+      The page URL hash is used to keep track of the selected geography so links
+      can be shared or revisited.
+    </p>
+    <p>While using Census Visualizer, requests may be sent to:</p>
+    <ul>
+      <li>Census Visualizer's API and web server</li>
+      <li>OpenStreetMap for base map tiles</li>
+      <li>
+        <code>geotiles.darrenskidmore.com</code>, which serves PMTiles assets
+        from Cloudflare R2
+      </li>
+    </ul>
+    <p>
+      Third-party providers such as Cloudflare, Cloudflare R2, and OpenStreetMap
+      may process network and request metadata as part of delivering content,
+      caching assets, and providing analytics. This may include information such
+      as IP addresses, browser type, request path, and timing data.
+    </p>
     <h2 id="ipip-workbench">IPIP Workbench</h2>
     <p>
-      No quiz responses are collected or stored server-side; all responses are
-      computed locally in the browser. In-progress quizzes and completed results
-      are stored in local storage on this device. However, non-identifying
-      analytics data may be collected by Cloudflare.
+      The following applies specifically to the <strong>IPIP Workbench</strong> website:
+    </p>
+    <p>
+      IPIP Workbench uses the browser's local storage to store in-progress
+      quizzes and complete results. No quiz responses are collected or stored
+      server-side.
+    </p>
+    <h2 id="utah-home-values">Utah Home Values Explorer</h2>
+    <p>
+      The following applies specifically to the <strong
+        >Utah Home Values Explorer</strong
+      > website:
+    </p>
+    <p>
+      Utah Home Values Explorer does not use cookies, local storage, or session
+      storage. The page URL hash is used to keep track of the selected geography
+      so links can be shared or revisited.
     </p>
   </section>
 </Layout>

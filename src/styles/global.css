@@ -170,7 +170,8 @@ footer a {
 }
 
 .hero p,
-section p {
+section p,
+section ul {
   color: var(--muted);
   max-width: 80ch;
 }
