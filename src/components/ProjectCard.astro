@@ -1,0 +1,54 @@
+---
+import Image from "astro/components/Image.astro";
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a class="card project-card" href={project.href}>
+  <div class="project-media">
+    {project.img ? (
+      <Image
+        src={project.img}
+        alt={project.imgAlt ?? `${project.title} screenshot`}
+        class="project-image"
+      />
+    ) : (
+      <div class="placeholder-landscape">Project image</div>
+    )}
+  </div>
+  <h3>{project.title}</h3>
+  <p>{project.description}</p>
+  <div
+    class="project-license"
+    aria-hidden={!project.imgLicense ? "true" : undefined}
+  >
+    {project.imgLicense
+      ? `Image licensed under ${project.imgLicense}`
+      : ""}
+  </div>
+</a>
+
+<style>
+  .project-card {
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+  }
+
+  .project-card h3 {
+    align-self: start;
+  }
+
+  .project-card p {
+    align-self: end;
+  }
+
+  .project-license {
+    min-height: 1.35em;
+    align-self: end;
+  }
+</style>

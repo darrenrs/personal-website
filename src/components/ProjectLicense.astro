@@ -1,0 +1,15 @@
+---
+interface Props {
+  license: string;
+  href?: string;
+}
+
+const { license, href } = Astro.props;
+---
+
+{href ? <a href={href}>Image licensed under {license}</a> : <span>Image licensed under {license}</span>}
+
+<style>
+  a { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+</style>

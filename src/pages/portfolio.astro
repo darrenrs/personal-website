@@ -1,222 +1,47 @@
 ---
 import Layout from "../layout/Layout.astro";
-import Image from "astro/components/Image.astro";
-import type { ImageMetadata } from "astro";
-import imageCensusVisualizer from "../images/projects/census-visualizer.png";
-import imageUtahPublicData from "../images/projects/utah-public-data.jpg";
-import imageIPIPWorkbench from "../images/projects/ipip-workbench.png";
-import imageDaysAliveMenuBar from "../images/projects/days-alive-menu-bar.png";
-import imageCS474 from "../images/projects/cs474-spotify-music.jpg";
-import imageCS270 from "../images/projects/cs270-nba-predictive-model.jpg";
-import imageStat230 from "../images/projects/stat230-figure-weights.png";
-import imagePhotography from "../images/projects/photography-sample.jpg";
-import imageIdleGameTools from "../images/projects/idle-game-tools.png";
-
-type Project = {
-  title: string;
-  description: string;
-  href: string;
-  img?: ImageMetadata;
-  imgAlt?: string;
-  imgLicense?: string;
-  imgSrc?: string;
-};
-
-const projects_personal: Project[] = [
-  {
-    title: "Census Visualizer",
-    description:
-      "A data pipeline and website to explore American Community Survey data in the United States for 400,000+ geographies.",
-    href: "/projects/census-visualizer/",
-    img: imageCensusVisualizer,
-    imgAlt:
-      "Sample screenshot of Census Visualizer showing Ohio's basic demographics.",
-  },
-  {
-    title: "IPIP Workbench",
-    description:
-      "Psychometric study, factor analysis, and online interactive for several personality assessments using the International Personality Item Pool.",
-    href: "/projects/ipip-workbench/",
-    img: imageIPIPWorkbench,
-    imgAlt:
-      "A factor heatmap diagram of the Big Five personality domains from the IPIP Workbench project.",
-  },
-  {
-    title: "Utah Home Values Explorer",
-    description:
-      "Browse and compare estimated single-family home values across Utah cities, counties, ZIP codes, and regions.",
-    href: "/projects/utah-home-values/",
-    img: imageUtahPublicData,
-    imgAlt: "A subdivision of single-family homes in Spanish Fork, Utah.",
-    imgLicense: "public domain",
-    imgSrc:
-      "https://www.pexels.com/photo/aerial-view-of-houses-in-a-village-5587970/",
-  },
-  {
-    title: "Days Alive Menu Bar",
-    description:
-      "An ultra-lightweight, native Swift macOS application that allows users to be reminded that they're never getting any younger.",
-    href: "https://github.com/darrenrs/days-alive-menu-bar",
-    img: imageDaysAliveMenuBar,
-    imgAlt:
-      "Sample screenshot of Days Alive Menu Bar showing one billion seconds of life.",
-  },
-];
-
-const projects_academic: Project[] = [
-  {
-    title: "CS 474: Spotify Playlist Track Predictor",
-    description:
-      "Fall 2023: An analysis of nearly 5 million Spotify songs and slightly effective playlist predictor/extender using a Recurrent Neural Network.",
-    href: "/files/cs474-spotify-playlist-track-predictor.pdf",
-    img: imageCS474,
-    imgAlt: "A closeup photo of a turntable, representing song prediction.",
-    imgLicense: "Creative Commons Zero",
-    imgSrc: "https://pxhere.com/en/photo/1622585",
-  },
-  {
-    title: "CS 270: NBA Predictive Modeling",
-    description:
-      "Winter 2024: A team project with several machine learning models to predict the outcome of NBA game results/money lines.",
-    href: "/files/cs270-nba-predictive-modeling.pdf",
-    img: imageCS270,
-    imgAlt: "An NBA game in Boston.",
-    imgLicense: "Creative Commons Attribution 2.0 Generic",
-    imgSrc: "https://www.flickr.com/photos/rene-germany/131710739/",
-  },
-  {
-    title: "Stat 230: Figure Weights ANOVA Experiment",
-    description:
-      "Winter 2024: An analysis of variance team experiment used to see if noise and notes affect performance on a popular mathematics puzzle.",
-    href: "/files/stat230-figure-weights-anova-experiment.pdf",
-    img: imageStat230,
-    imgAlt: "Sample screenshot of a Figure Weights problem.",
-  },
-];
-
-const projects_other: Project[] = [
-  {
-    title: "Photography",
-    description:
-      "A collection of my favorite photos I have taken over the years. Mainly landscapes, skylines, and liminal spaces.",
-    href: "/photos",
-    img: imagePhotography,
-    imgAlt:
-      "Cypress Cove Scenic View in Monterey County, California (April 23, 2022).",
-  },
-  {
-    title: "Idle Game Tools",
-    description:
-      "A collection of community-developed utilities that I currently maintain for selected idle/incremental games.",
-    href: "https://idlegametools.com",
-    img: imageIdleGameTools,
-    imgAlt:
-      "Screenshot of exponential growth with upgrade symbols, representing idle game progress.",
-  },
-];
+import WideProject from "../components/WideProject.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
 ---
 
 <Layout
   title="Portfolio | Darren R. Skidmore"
-  description="Browse selected projects by Darren Skidmore."
+  description="Explore Darren Skidmore's personal and academic projects in data science, data engineering, interactive web applications, visualization, GIS, and machine learning."
 >
   <section class="stack">
     <h1>Portfolio</h1>
-    <p>Take a look at the highlights of my work!</p>
+    <p>
+      This page showcases my personal and academic projects exploring data
+      science, data engineering, and machine learning—from preparing and
+      analyzing data to building interactive web applications, visualizations,
+      and GIS tools.
+    </p>
     <h2>Projects</h2>
-    <div class="grid portfolio-grid">
-      {
-        projects_personal.map((project: Project) => (
-          <a class="card project-card" href={project.href}>
-            <div class="project-media">
-              {project.img ? (
-                <Image
-                  src={project.img}
-                  alt={project.imgAlt ?? `${project.title} screenshot`}
-                  class="project-image"
-                />
-              ) : (
-                <div class="placeholder-landscape">Project image</div>
-              )}
-            </div>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div class="project-license" aria-hidden={!project.imgLicense ? "true" : undefined}>
-              {project.imgLicense ? `Image licensed under ${project.imgLicense}` : ""}
-            </div>
-          </a>
-        ))
-      }
+    <div class="project-list">
+      {projects.filter((project) => project.section === "personal").map((project) => (
+        <WideProject project={project} />
+      ))}
     </div>
     <h2>School Projects</h2>
     <div class="grid portfolio-grid">
-      {
-        projects_academic.map((project: Project) => (
-          <a class="card project-card" href={project.href}>
-            <div class="project-media">
-              {project.img ? (
-                <Image
-                  src={project.img}
-                  alt={project.imgAlt ?? `${project.title} screenshot`}
-                  class="project-image"
-                />
-              ) : (
-                <div class="placeholder-landscape">Project image</div>
-              )}
-            </div>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div class="project-license" aria-hidden={!project.imgLicense ? "true" : undefined}>
-              {project.imgLicense ? `Image licensed under ${project.imgLicense}` : ""}
-            </div>
-          </a>
-        ))
-      }
+      {projects.filter((project) => project.section === "academic").map((project) => (
+        <ProjectCard project={project} />
+      ))}
     </div>
     <h2>Other</h2>
     <div class="grid portfolio-grid">
-      {
-        projects_other.map((project: Project) => (
-          <a class="card project-card" href={project.href}>
-            <div class="project-media">
-              {project.img ? (
-                <Image
-                  src={project.img}
-                  alt={project.imgAlt ?? `${project.title} screenshot`}
-                  class="project-image"
-                />
-              ) : (
-                <div class="placeholder-landscape">Project image</div>
-              )}
-            </div>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div class="project-license" aria-hidden={!project.imgLicense ? "true" : undefined}>
-              {project.imgLicense ? `Image licensed under ${project.imgLicense}` : ""}
-            </div>
-          </a>
-        ))
-      }
+      {projects.filter((project) => project.section === "other").map((project) => (
+        <ProjectCard project={project} />
+      ))}
     </div>
   </section>
 </Layout>
 
 <style>
-  .project-card {
-    grid-row: span 4;
-    grid-template-rows: subgrid;
-  }
-
-  .project-card h3 {
-    align-self: start;
-  }
-
-  .project-card p {
-    align-self: end;
-  }
-
-  .project-license {
-    min-height: 1.35em;
-    align-self: end;
+  .project-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 </style>

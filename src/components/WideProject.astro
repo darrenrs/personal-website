@@ -1,0 +1,209 @@
+---
+import GitHubIcon from "./GitHubIcon.astro";
+import ProjectLicense from "./ProjectLicense.astro";
+import Image from "astro/components/Image.astro";
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-wide-card">
+  <div class="project-visual">
+    <a class="project-media" href={project.href} aria-label={`Explore ${project.title}`}>
+      {project.img ? (
+        <Image
+          src={project.img}
+          alt={project.imgAlt ?? `${project.title} screenshot`}
+          class="project-image"
+        />
+      ) : (
+        <div class="placeholder-landscape">Project image</div>
+      )}
+    </a>
+    {project.imgLicense && (
+      <div class="project-license">
+        <ProjectLicense license={project.imgLicense} href={project.imgSrc} />
+      </div>
+    )}
+  </div>
+  <div class="project-details">
+    <div class="project-copy">
+      <h3><a href={project.href}>{project.title}</a></h3>
+      {project.categories && (
+        <p class="project-categories">
+          {project.categories.join(" • ")}
+        </p>
+      )}
+      <p>{project.description}</p>
+    </div>
+    <div class="project-actions">
+      <a
+        class="project-button project-button-primary"
+        href={project.href}
+      >
+        Go to project
+      </a>
+      {project.githubUrl && (
+        <a
+          class="project-button project-github"
+          href={project.githubUrl}
+          aria-label={`View ${project.title} on GitHub`}
+        >
+          <GitHubIcon />
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-wide-card {
+    display: grid;
+    grid-template-columns: minmax(280px, 40%) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: 0 14px 34px rgb(23 33 27 / 8%);
+    overflow: hidden;
+    padding: 1.15rem;
+  }
+
+  .project-visual {
+    display: contents;
+  }
+
+  .project-wide-card {
+    row-gap: 0.65rem;
+  }
+
+  .project-wide-card .project-license {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .project-wide-card .project-media {
+    min-height: 220px;
+    aspect-ratio: 2000 / 1204;
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+  }
+
+  .project-details {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    display: grid;
+    align-content: space-between;
+    gap: 1.5rem;
+    padding-block: 0;
+  }
+
+  .project-copy h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.12;
+  }
+
+  .project-copy p {
+    line-height: 1.55;
+  }
+
+  .project-copy .project-categories {
+    margin-bottom: 0.85rem;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .project-button {
+    min-height: 2.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-weight: 400;
+    line-height: 1;
+    padding: 0.75rem 0.95rem;
+  }
+
+  .project-button-primary {
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: #101113;
+  }
+
+  .project-button-primary:hover {
+    background: color-mix(in srgb, var(--accent), white 15%);
+    color: #101113;
+  }
+
+  .project-github {
+    width: 2.65rem;
+    padding: 0;
+    border: 1px solid var(--muted);
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .project-github:hover {
+    background: color-mix(in srgb, var(--surface), var(--bg) 35%);
+    color: var(--accent);
+  }
+
+  a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .project-wide-card {
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .project-wide-card {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project-visual {
+      display: grid;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .project-details {
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .project-wide-card {
+      row-gap: 1.5rem;
+    }
+
+    .project-wide-card .project-media {
+      min-height: 180px;
+    }
+  }
+
+  .project-license {
+    min-height: 1.35em;
+    align-self: end;
+  }
+</style>

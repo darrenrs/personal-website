@@ -2,6 +2,10 @@
 import Image from "astro/components/Image.astro";
 import selfPortrait from "../images/portrait.jpg";
 import Layout from "../layout/Layout.astro";
+import HighlightedProject from "../components/HighlightedProject.astro";
+import { projects } from "../data/projects";
+
+const highlightedProjects = projects.filter((project) => project.mainPage);
 ---
 
 <Layout title="Darren R. Skidmore" description="Home page for Darren Skidmore.">
@@ -9,21 +13,89 @@ import Layout from "../layout/Layout.astro";
     <div class="stack">
       <h1>Hi, I'm Darren Skidmore.</h1>
       <p>
-        I am studying computer science with an emphasis in data science at Brigham
-        Young University in Provo, Utah. I'm passionate about technology,
-        artificial intelligence, and solving problems using data and statistics.
-        Check out my projects and other interests here, and if this site piques
-        your interest, get in touch!
+        I'm a computer science student at Brigham Young University, emphasizing
+        data science with minors in statistics and mathematics. I'm passionate
+        about statistical analysis, GIS, and machine learning, and I build data
+        pipelines and interactive applications to explore demographic, housing,
+        and other public datasets.
+      </p>
+      <p>
+        Check out what I've built, and if this site piques your interest,
+        get in touch!
       </p>
       <div class="actions">
-        <a href="/about">About</a>
-        <a href="/portfolio">Portfolio</a>
+        <a class="resume-action" href="/resume.pdf">View resume</a>
         <a href="/contact">Contact</a>
-        <a href="/resume.pdf">Resume</a>
       </div>
     </div>
     <div class="portrait">
       <Image src={selfPortrait} alt="Darren Skidmore" />
     </div>
   </section>
+  <section
+    class="highlighted-projects"
+    aria-labelledby="highlighted-projects-heading"
+  >
+    <div class="highlighted-heading">
+      <h2 id="highlighted-projects-heading">Selected projects</h2>
+      <a href="/portfolio/"
+        >View all projects <span aria-hidden="true">→</span></a
+      >
+    </div>
+    <div class="highlighted-grid">
+      {
+        highlightedProjects.map((project) => (
+          <HighlightedProject project={project} />
+        ))
+      }
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .actions .resume-action {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #101113;
+  }
+
+  .actions .resume-action:hover {
+    background: color-mix(in srgb, var(--accent), white 15%);
+    color: #101113;
+  }
+
+  .actions a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .highlighted-projects {
+    margin-top: clamp(3rem, 6vw, 5rem);
+  }
+  .highlighted-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .highlighted-heading a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .highlighted-heading a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .highlighted-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  @media (max-width: 760px) {
+    .highlighted-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
