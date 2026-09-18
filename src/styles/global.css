@@ -56,6 +56,10 @@ a:hover {
   color: var(--accent);
 }
 
+p a {
+  color: var(--text);
+}
+
 h1,
 h2,
 h3,
@@ -133,6 +137,7 @@ footer {
 
 footer a {
   text-decoration: underline !important;
+  color: color-mix(in srgb, var(--muted), var(--surface) 22%);
 }
 
 .footer-links {
@@ -141,10 +146,9 @@ footer a {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
-  color: color-mix(in srgb, var(--muted), var(--surface) 22%);
 }
 
-.footer-links a:hover {
+footer a:hover {
   color: var(--muted);
 }
 
@@ -374,12 +378,12 @@ code {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b1220;
-    --bg-gradient: #1d2440;
-    --text: #e5e7eb;
-    --muted: #9ca3af;
-    --surface: #121a2b;
-    --border: #243044;
+    --bg: #101113;
+    --bg-gradient: #1c1e21;
+    --text: #e7e8eb;
+    --muted: #a3a7af;
+    --surface: #181a1d;
+    --border: #2b2e33;
     --accent: #60a5fa;
   }
 }

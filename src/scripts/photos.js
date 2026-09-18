@@ -116,7 +116,6 @@ function initPhotosPage() {
   }
 
   function copyrightNoticeText(photo) {
-    console.log(photo);
     return typeof photo.copyrightNotice === "string"
       ? photo.copyrightNotice.trim()
       : "";
@@ -209,13 +208,6 @@ function initPhotosPage() {
 
     metadata.className = "photos-meta";
 
-    if (copyright) {
-      const descriptionRow = document.createElement("p");
-      descriptionRow.className = "photos-license";
-      descriptionRow.textContent = copyright;
-      metadata.append(descriptionRow);
-    }
-
     if (summary) {
       const descriptionRow = document.createElement("p");
       descriptionRow.className = "photos-meta-description";
@@ -223,14 +215,21 @@ function initPhotosPage() {
       metadata.append(descriptionRow);
     }
 
+    if (copyright) {
+      const descriptionRow = document.createElement("p");
+      descriptionRow.className = "photos-license";
+      descriptionRow.textContent = copyright;
+      metadata.append(descriptionRow);
+    }
+
     metadata.append(createMetadataRow("photos-meta-primary", label, fNumber));
 
-    if (gps) {
-      const gpsRow = document.createElement("p");
-      gpsRow.className = "photos-meta-gps";
-      gpsRow.textContent = gps;
-      metadata.append(gpsRow);
-    }
+    // Reserve the GPS line even when coordinates are unavailable.
+    const gpsRow = document.createElement("p");
+    gpsRow.className = "photos-meta-gps";
+    gpsRow.textContent = gps;
+    if (!gps) gpsRow.setAttribute("aria-hidden", "true");
+    metadata.append(gpsRow);
 
     thumb.append(image);
     button.append(thumb, metadata);
@@ -245,10 +244,30 @@ function initPhotosPage() {
       return;
     }
 
-    lightboxImageElement.src = fullUrl(photo);
+    const width = Number(photo.width);
+    const height = Number(photo.height);
+
+    // Reserve the final image box before starting the request, including when
+    // navigating from a photo with a different aspect ratio.
+    if (
+      Number.isFinite(width) && width > 0 &&
+      Number.isFinite(height) && height > 0
+    ) {
+      lightboxImageElement.width = width;
+      lightboxImageElement.height = height;
+      lightboxImageElement.style.setProperty("--photo-width", `${width}px`);
+      lightboxImageElement.style.setProperty(
+        "--photo-aspect", String(width / height),
+      );
+    } else {
+      lightboxImageElement.removeAttribute("width");
+      lightboxImageElement.removeAttribute("height");
+      lightboxImageElement.style.removeProperty("--photo-width");
+      lightboxImageElement.style.removeProperty("--photo-aspect");
+    }
+
     lightboxImageElement.alt = altText(photo, currentPhotoIndex);
-    lightboxImageElement.width = Number(photo.width);
-    lightboxImageElement.height = Number(photo.height);
+    lightboxImageElement.src = fullUrl(photo);
     lightboxCaptionElement.textContent = captionText(photo);
     lightboxCaptionElement.hidden = lightboxCaptionElement.textContent === "";
     lightboxCounterElement.textContent = `${currentPhotoIndex + 1} / ${photos.length}`;
