@@ -120,7 +120,7 @@ export const projects: Project[] = [
     section: "other",
     description:
       "A collection of my favorite photos I have taken over the years. Mainly landscapes, skylines, and liminal spaces.",
-    href: "/photos",
+    href: "/photos/",
     img: imagePhotography,
     imgAlt:
       "Cypress Cove Scenic View in Monterey County, California (April 23, 2022).",
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     section: "other",
     description:
       "A collection of community-developed utilities that I have contributed to for selected idle/incremental games.",
-    href: "https://idlegametools.com",
+    href: "https://idlegametools.com/",
     img: imageIdleGameTools,
     imgAlt:
       "Screenshot of exponential growth with upgrade symbols, representing idle game progress.",
